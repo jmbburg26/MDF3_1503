@@ -1,3 +1,7 @@
+///////////////////////////////
+/////John Brandenburg/////////
+//////////MDF3 1503///////////
+
 package com.bbgatestudios.mdf3_1503;
 
 import android.app.Activity;
@@ -12,6 +16,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MainFragment frag = new MainFragment();
+        getFragmentManager().beginTransaction()
+                .add(R.id.myContainer, frag)
+                .commit();
+
     }
 
 
