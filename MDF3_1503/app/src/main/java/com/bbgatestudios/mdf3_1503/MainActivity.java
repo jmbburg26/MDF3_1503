@@ -6,8 +6,11 @@ package com.bbgatestudios.mdf3_1503;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends Activity {
@@ -21,7 +24,6 @@ public class MainActivity extends Activity {
         getFragmentManager().beginTransaction()
                 .add(R.id.myContainer, frag)
                 .commit();
-
     }
 
 

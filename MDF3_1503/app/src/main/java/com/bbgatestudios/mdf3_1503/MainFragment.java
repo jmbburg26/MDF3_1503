@@ -6,12 +6,20 @@ package com.bbgatestudios.mdf3_1503;
 
 import android.app.Fragment;
 import android.app.ListFragment;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +27,11 @@ import java.util.List;
 /**
  * Created by john_brandenburg on 3/3/15.
  */
-public class MainFragment extends ListFragment {
+public class MainFragment extends ListFragment{
 
     List<Track> songs = new TrackData().getTracks();
     private SongListener sListener;
+    MediaPlayer mediaPlayer;
 
     public interface SongListener{
         public void startService();
@@ -41,7 +50,7 @@ public class MainFragment extends ListFragment {
                 songs);
         setListAdapter(adapter);
 
-        MediaPlayer player = new MediaPlayer();
+        mediaPlayer = new MediaPlayer();
     }
 
     @Override
@@ -49,7 +58,16 @@ public class MainFragment extends ListFragment {
                              ViewGroup container,
                              Bundle savedInstanceState){
 
+
+
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         return rootView;
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int pos, long id) {
+        super.onListItemClick(l, v, pos, id);
+        Toast.makeText(getActivity(), "Item " + id + " was clicked", Toast.LENGTH_LONG).show();
+        Log.d("PLAY_BUTTON", "The button has been pressed");
     }
 }
