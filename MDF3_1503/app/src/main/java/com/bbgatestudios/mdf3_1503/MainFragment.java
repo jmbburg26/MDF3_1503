@@ -4,21 +4,15 @@
 
 package com.bbgatestudios.mdf3_1503;
 
-import android.app.Fragment;
 import android.app.ListFragment;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,7 +28,6 @@ public class MainFragment extends ListFragment{
     MediaPlayer mediaPlayer;
 
     public interface SongListener{
-        public void startService();
         public ArrayList<Track> getSongs();
     }
 
@@ -64,10 +57,21 @@ public class MainFragment extends ListFragment{
         return rootView;
     }
 
+//    public void startService(){
+//        Intent intent = new Intent(getActivity(), AudioService.class);
+//        startService(intent);
+//    };
+//
+//    public void stopService(){
+//        Intent intent = new Intent(this, AudioService.class);
+//        stopService(intent);
+//        mPlayer.stop();
+//    };
+
     @Override
     public void onListItemClick(ListView l, View v, int pos, long id) {
         super.onListItemClick(l, v, pos, id);
         Toast.makeText(getActivity(), "Item " + id + " was clicked", Toast.LENGTH_LONG).show();
-        Log.d("PLAY_BUTTON", "The button has been pressed");
+
     }
 }

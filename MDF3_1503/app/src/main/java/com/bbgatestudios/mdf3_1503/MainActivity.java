@@ -5,6 +5,7 @@
 package com.bbgatestudios.mdf3_1503;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -48,4 +49,14 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void startService(){
+        Intent intent = new Intent(this, AudioService.class);
+        startService(intent);
+    };
+
+    public void stopService(){
+        Intent intent = new Intent(this, AudioService.class);
+        stopService(intent);
+    };
 }
