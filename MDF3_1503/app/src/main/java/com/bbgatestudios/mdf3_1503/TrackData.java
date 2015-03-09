@@ -1,3 +1,6 @@
+///////////////////////////////
+/////John Brandenburg/////////
+//////////MDF3 1503///////////
 package com.bbgatestudios.mdf3_1503;
 
 import java.util.ArrayList;

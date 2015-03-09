@@ -57,17 +57,6 @@ public class MainFragment extends ListFragment{
         return rootView;
     }
 
-//    public void startService(){
-//        Intent intent = new Intent(getActivity(), AudioService.class);
-//        startService(intent);
-//    };
-//
-//    public void stopService(){
-//        Intent intent = new Intent(this, AudioService.class);
-//        stopService(intent);
-//        mPlayer.stop();
-//    };
-
     @Override
     public void onListItemClick(ListView l, View v, int pos, long id) {
         super.onListItemClick(l, v, pos, id);
