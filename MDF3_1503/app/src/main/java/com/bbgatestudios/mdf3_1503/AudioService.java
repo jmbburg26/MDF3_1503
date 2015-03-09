@@ -147,4 +147,8 @@ public class AudioService extends Service {
     public IBinder onBind(Intent intent) {
         return new AudioServiceBinder();
     }
+
+    public void showToast() {
+        Toast.makeText(this, "Practice text!", Toast.LENGTH_SHORT).show();
+    }
 }

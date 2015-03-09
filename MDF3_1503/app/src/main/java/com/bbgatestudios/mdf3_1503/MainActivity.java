@@ -5,8 +5,12 @@
 package com.bbgatestudios.mdf3_1503;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +18,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements ServiceConnection{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +54,30 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void startService(){
-        Intent intent = new Intent(this, AudioService.class);
-        startService(intent);
-    };
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-    public void stopService(){
         Intent intent = new Intent(this, AudioService.class);
-        stopService(intent);
-    };
+        bindService(intent, this, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        unbindService(this);
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        AudioService.AudioServiceBinder binder = (AudioService.AudioServiceBinder)service;
+        AudioService myService = binder.getService();
+        myService.showToast();
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
+    }
 }
