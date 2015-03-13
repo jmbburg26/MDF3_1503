@@ -5,10 +5,13 @@
 package com.bbgatestudios.mdf3_1503;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -20,6 +23,8 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements ServiceConnection{
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +34,11 @@ public class MainActivity extends Activity implements ServiceConnection{
         getFragmentManager().beginTransaction()
                 .add(R.id.myContainer, frag)
                 .commit();
+
+
     }
+
+
 
 
     @Override
@@ -58,15 +67,14 @@ public class MainActivity extends Activity implements ServiceConnection{
     protected void onStart() {
         super.onStart();
 
-        Intent intent = new Intent(this, AudioService.class);
-        bindService(intent, this, Context.BIND_AUTO_CREATE);
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        unbindService(this);
+        //unbindService(this);
     }
 
     @Override

@@ -75,7 +75,7 @@ public class AudioService extends Service {
             mPlayer.setOnPreparedListener((MediaPlayer.OnPreparedListener) this);
 
             try {
-                mPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/raw/menu_music"));
+                mPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/raw/grace"));
             } catch(IOException e) {
                 e.printStackTrace();
 
